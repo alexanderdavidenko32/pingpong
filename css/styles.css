@@ -1,0 +1,44 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.pane {
+    height: 100%;
+    background: #cfcfcf;
+    position: relative;
+}
+
+.racket {
+    width: 10px;
+    height: 150px;
+    top: 100px;
+    position: absolute;
+    background: black;
+}
+.left-racket {
+    left: 50px;
+}
+.right-racket {
+    right: 50px;
+}
+
+.half-field {
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background: gray;
+    left: 50%;
+    margin-left: -1px;
+}
+.ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: tomato;
+    left: 60px;
+    top: 150px;
+    position: absolute;
+}

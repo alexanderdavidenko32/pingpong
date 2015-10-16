@@ -52,11 +52,11 @@
         };
         this.addListeners = function() {
             var me = this;
-            var keypressed;
+            var keypressed = false;
             document.addEventListener('keypress', function(e) {
                 keypressed = true;
                 var keypressHandler = function() {
-                    switch(e.keyCode) {
+                    switch(e.charCode) {
                         case 97: //a
                             me.moveRacket(me.leftRacket, 'top'); break;
                         case 122: //z
@@ -76,7 +76,6 @@
             });
             document.addEventListener('keyup', function() {
                 keypressed = false;
-                console.log('asd');
             });
         };
         this.moveRacket = function(racket, direction) {

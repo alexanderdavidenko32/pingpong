@@ -54,3 +54,9 @@ html, body {
     color: red;
     text-align: center;
 }
+.movement {
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    color: gray;
+}

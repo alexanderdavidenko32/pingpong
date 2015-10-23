@@ -27,7 +27,6 @@
             var me = this;
             this.renderScore();
             this.generateBall();
-            this.ball = new Ball(this);
             this.ball.move();
             this.addListeners();
         };
@@ -103,7 +102,7 @@
         this.leftRacket = document.querySelector('.left-racket');
         this.rightRacket = document.querySelector('.right-racket');
         this.speed = 5;
-        this.angle = 315;
+        //this.angle = 315;
         this.stop = false;
         this.game = game;
 

@@ -38,9 +38,11 @@ html, body {
     height: 10px;
     border-radius: 50%;
     background: tomato;
-    left: 60px;
-    top: 150px;
+    left: 0px;
+    top: 0px;
     position: absolute;
+    will-change: left, top;
+    transform: translate(0px, 0px);
 }
 .score-wrapper {
     position: absolute;

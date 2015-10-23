@@ -36,8 +36,10 @@
             while (!(this.ball.angle % 90)) {
                 this.ball.angle = Math.round(Math.random() * 360);
             }
-            this.ball.element.style.top = this.body.offsetHeight / 2 + 'px';
-            this.ball.element.style.left = this.body.offsetWidth / 2 + 'px';
+            this.ball.point = {
+                top: this.body.offsetHeight / 2,
+                left: this.body.offsetWidth / 2
+            };
         };
         this.restart = function() {
             var me = this;
@@ -102,15 +104,19 @@
         this.leftRacket = document.querySelector('.left-racket');
         this.rightRacket = document.querySelector('.right-racket');
         this.speed = 5;
-        //this.angle = 315;
         this.stop = false;
         this.game = game;
+
+        this.point = {
+            top: this.body.offsetHeight / 2,
+            left: this.body.offsetWidth / 2
+        };
 
         this.checkPosition = function() {
             this.angle = this.angle % 360;
 
-            var elemTop = parseFloat(this.element.style.top || this.element.offsetTop);
-            var elemLeft = parseFloat(this.element.style.left || this.element.offsetLeft);
+            var elemTop = this.point.top;
+            var elemLeft = this.point.left;
 
             var leftRocketTop = parseFloat(this.leftRacket.style.top || this.leftRacket.offsetTop);
             var rightRacketTop = parseFloat(this.rightRacket.style.top || this.rightRacket.offsetTop);
@@ -156,18 +162,10 @@
             var move = function() {
                 me.checkPosition();
 
-                var elemTop = parseFloat(me.element.style.top || me.element.offsetTop);
-                var elemLeft = parseFloat(me.element.style.left || me.element.offsetLeft);
-                var point = {
-                    top: elemTop,
-                    left: elemLeft
-                };
+                me.point.top += me.speed * Math.sin(me.angle * (Math.PI / 180));
+                me.point.left += me.speed * Math.cos(me.angle * (Math.PI / 180));
 
-                point.top += me.speed * Math.sin(me.angle * (Math.PI / 180));
-                point.left += me.speed * Math.cos(me.angle * (Math.PI / 180));
-
-                me.element.style.left = point.left + 'px';
-                me.element.style.top = point.top + 'px';
+                me.element.style.transform = 'translate(' + me.point.left + 'px,' + me.point.top + 'px)';
 
                 if (!me.stop) {
                     requestAnimationFrame(move);
